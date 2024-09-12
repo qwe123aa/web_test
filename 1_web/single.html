@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Planet Nine : Alter Ego</title>
+    <meta charset="utf-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZZ8GJHTD9K"></script>
+    <script src="js/analyze.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/btn.js"></script>
+</head>
+
+<body class="day">    
+    <div class="center">
+        <a href="#!ONEWE" onclick="single_page('ajax/Onewe')"><img id="imgId" src="img/logo_day.jpg" class="logo"></a>
+    </div>
+
+    <div id="grid">
+        <div id="menu">
+            <ol id="nav">
+
+            </ol>
+
+            <input type="button" value="day" onclick="btn_theme(this)">
+        </div>
+        
+
+    <article>
+        
+    </article>
+
+    <br>
+    <div class="comment">
+        <p>
+            <div id="disqus_thread"></div>
+            <script src="js/comment.js"></script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                    Disqus.</a></noscript>
+        </p>
+    </div>
+
+    <script type="text/javascript" src="js/chatting.js"></script>
+
+</body>
+
+    <script>
+        fetch('ajax/list').then(function(response){
+            response.text().then(function(text){
+                var albums = text.split(',');
+                var i =0;
+                var tags='';
+                while(i<albums.length){
+                    var album = albums[i];
+                    //<li><a href="#!Isotropy" onclick="single_page('ajax/Isotropy')">Planet Nine : Isotropy</a></li> 
+                    var tag = '<li><a href="#!'+album+'" onclick="single_page(\''+album+'\')">Planet Nine : '+album+'</a></li>'
+                    tags = tags+tag;
+                    i=i+1;
+                }
+                document.querySelector('#nav').innerHTML = tags;
+            })
+        })
+
+        function single_page(page){
+            fetch(page).then(function(response){
+                response.text().then(function(text){
+                    document.querySelector('article').innerHTML = text;
+                })
+            })
+        }
+
+        if(location.hash){
+            var name = 'ajax/'+location.hash.substr(2);
+            single_page(name);
+        }else{
+            var name = 'ajax/Onewe';
+            single_page(name);
+        }
+    </script>
+</html>
