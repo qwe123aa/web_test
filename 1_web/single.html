@@ -49,17 +49,7 @@
     <script>
         fetch('ajax/list').then(function(response){
             response.text().then(function(text){
-                var albums = text.split(',');
-                var i =0;
-                var tags='';
-                while(i<albums.length){
-                    var album = albums[i];
-                    //<li><a href="#!Isotropy" onclick="single_page('ajax/Isotropy')">Planet Nine : Isotropy</a></li> 
-                    var tag = '<li><a href="#!'+album+'" onclick="single_page(\''+album+'\')">Planet Nine : '+album+'</a></li>'
-                    tags = tags+tag;
-                    i=i+1;
-                }
-                document.querySelector('#nav').innerHTML = tags;
+                document.querySelector('#nav').innerHTML = text;
             })
         })
 

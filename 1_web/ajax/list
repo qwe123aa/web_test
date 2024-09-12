@@ -1,1 +1,3 @@
-Alter Ego,Voyager,Isotropy
+<li><a href="#!AlterEgo" onclick="single_page('ajax/AlterEgo')">Planet Nine : Alter Ego</a></li>
+<li><a href="#!Voyager" onclick="single_page('ajax/Voyager')">Planet Nine : Voyager</a></li>
+<li><a href="#!Isotropy" onclick="single_page('ajax/Isotropy')">Planet Nine : Isotropy</a></li>
